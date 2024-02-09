@@ -17,4 +17,4 @@ testfixtures                        # Provides a LogCapture utility to be used b
 tox
 more-itertools
 xblock-sdk
-
+google-cloud-storage				 # Required for testing Google Cloud Storage
