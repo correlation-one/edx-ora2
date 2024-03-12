@@ -1,0 +1,32 @@
+version = 1
+
+[[analyzers]]
+name = "python"
+enabled = true
+
+[analyzers.meta]
+runtime_version = "3.x.x"
+
+[[analyzers]]
+name = "javascript"
+enabled = true
+
+[analyzers.meta]
+environment = ["nodejs", "jquery", "browser", "mongo", "jest", "cypress", "mocha", "vitest", "jasmine"]
+plugins = ["react", "angularjs", "angular", "vue", "ember", "meteor"]
+
+[[analyzers]]
+name = "test-coverage"
+enabled = true
+
+[[analyzers]]
+name = "terraform"
+enabled = true
+
+[[analyzers]]
+name = "sql"
+enabled = true
+
+[[analyzers]]
+name = "shell"
+enabled = true
