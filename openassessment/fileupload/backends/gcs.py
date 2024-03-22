@@ -42,6 +42,7 @@ class GCSBackend(BaseBackend):
     @catch_broad_exception
     def get_download_url(self, key):
         """Get a signed URL for downloading a file from GCS"""
+        # TODO: cache the result of this method for a few minutes
         bucket_name, key_name = self._retrieve_parameters(key)
         blob = get_blob_object(bucket_name, key_name)
         if not blob.exists():
