@@ -12,6 +12,7 @@ log = logging.getLogger("openassessment.fileupload.api")  # pylint: disable=inva
 
 def catch_broad_exception(method):
     """Decorator to catch broad exceptions, log them, and raise a FileUploadInternalError."""
+
     @functools.wraps(method)
     def wrapper(*args, **kwargs):
         try:
@@ -21,11 +22,12 @@ def catch_broad_exception(method):
                 f"Internal exception occurred while executing ora2 file-upload backend gcs.{method.__name__}: {str(ex)}"
             )
             raise FileUploadInternalError(ex) from ex
+
     return wrapper
 
 
 class GCSBackend(BaseBackend):
-    """ GCS Bucket File Upload Backend. """
+    """GCS Bucket File Upload Backend."""
 
     @catch_broad_exception
     def get_upload_url(self, key, content_type):
@@ -66,4 +68,5 @@ class GCSBackend(BaseBackend):
 def get_blob_object(bucket_name, key_name):
     """Get a blob object from GCS"""
     client = storage.Client()
+    log.info(f"GCS client initiated: will write to bucket {bucket_name}")
     return client.bucket(bucket_name).blob(key_name)
